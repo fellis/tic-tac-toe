@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start-homework-09": "node app.js"
+    "start": "node app.js"
   },
   "author": "Andriy Yurovskyy",
   "license": "MIT",
