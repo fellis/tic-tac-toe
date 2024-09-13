@@ -1,0 +1,84 @@
+services:
+  mapTemplates:
+    class: 'services/ticTacToeMaps/maps/templates/mapTemplatesContext'
+
+  getMapSize:
+    class: 'services/ticTacToeMaps/mapSizes/getMapSize'
+
+  createCellBack:
+    class: 'services/ticTacToeMaps/mapCells/backs/factories/cellBacksFactory'
+    arguments: [ '@mapTemplates' ]
+
+  createCellObject:
+    class: 'services/ticTacToeMaps/mapCells/objects/factories/cellObjectsFactory'
+    arguments: [ '@mapTemplates' ]
+
+  mapValidator:
+    class: 'services/ticTacToeMaps/maps/mapValidator'
+
+  mapBuilder:
+    class: 'services/ticTacToeMaps/maps/builders/mapBuilder'
+    arguments:
+    - '@mapValidator'
+    - '@mapTemplates'
+    - '@createCellBack'
+    - '@createCellObject'
+    - 'data/colors/toCliColors/'
+
+  classicObjectsOnMapStrategy:
+    class: 'services/gameLogics/strategies/classicObjectsOnMapStrategy'
+
+  connectFourObjectsOnMapStrategy:
+    class: 'services/gameLogics/strategies/connectFourObjectsOnMapStrategy'
+
+  gomokuObjectsOnMapStrategy:
+    class: 'services/gameLogics/strategies/gomokuObjectsOnMapStrategy'
+
+  objectsOnMap:
+    class: 'services/gameLogics/objectsOnMapContext'
+    arguments:
+      - '@classicObjectsOnMapStrategy'
+      - '@connectFourObjectsOnMapStrategy'
+      - '@gomokuObjectsOnMapStrategy'
+
+  createTicTacToeField:
+    class: 'services/ticTacToeMaps/readyToUseMaps/factories/readyToUseMapFactory'
+    arguments:
+      - '@objectsOnMap'
+      - '@mapBuilder'
+      - '@mapTemplates'
+
+  askChildQuestionStrategy:
+    class: 'services/scenarios/answers/answerHandlerStrategies/askChildQuestionStrategy'
+
+  exitAppStrategy:
+    class: 'services/scenarios/answers/answerHandlerStrategies/exitAppStrategy'
+
+  reAskParentQuestionStrategy:
+    class: 'services/scenarios/answers/answerHandlerStrategies/reAskParentQuestionStrategy'
+
+  answerHandler:
+    class: 'services/scenarios/answers/answerHandlerContext'
+    arguments:
+      - '@askChildQuestionStrategy'
+      - '@reAskParentQuestionStrategy'
+      - '@exitAppStrategy'
+
+  createAnswer:
+    class: 'services/scenarios/answers/factories/answersFactory'
+
+  createQuestion:
+    class: 'services/scenarios/questions/factories/questionsFactory'
+    arguments: ['@answerHandler']
+
+  objectScenarioProvider:
+    class: 'services/scenarios/scenarioProviderStrategies/objectScenarioProviderStrategy'
+    arguments: ['@createTicTacToeField',  '@createQuestion', '@createAnswer']
+
+  jsonScenarioProvider:
+    class: 'services/scenarios/scenarioProviderStrategies/jsonScenarioProviderStrategy'
+    arguments: ['@objectScenarioProvider']
+
+  scenarioProvider:
+    class: 'services/scenarios/scenarioProviderContext'
+    arguments: ['@jsonScenarioProvider']

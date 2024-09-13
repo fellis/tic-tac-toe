@@ -1,0 +1,85 @@
+{
+  "text": "Hello! Do you want to learn more about Tic-Tac-Toe game?",
+  "answers": [
+    {
+      "text": "Yes",
+      "question": {
+        "text": "Tic-Tac-Toe is an ancient game that dates back to the Roman Empire. \nThe Romans played a game called \"Terni Lapilli\" which had similar rules but was played on a different grid. \nThe game was also played in ancient Egypt and China, making it one of the oldest known games.",
+        "answers": [
+          {
+            "text": "Continue...",
+            "question": {
+              "text": "Tic-Tac-Toe is a mathematically solvable game. \nThis means that with optimal play from both players, the game will always end in a draw. \nThere are 765 unique positions and 26,830 possible games that can be played in Tic-Tac-Toe. \nKnowing the perfect strategy ensures that you can never lose the game, \nalthough it doesn't guarantee a win if your opponent also plays perfectly.",
+              "answers": [
+                {
+                  "text": "Continue...",
+                  "question": {
+                    "text": "Tic-Tac-Toe is often used in the field of computer science to teach algorithms and artificial intelligence (AI). \nDue to its simplicity, it's a great way to introduce concepts such as game theory, decision trees, and the minimax algorithm. \nEarly AI programs, like the one created by Arthur Samuel in the 1950s, \nused Tic-Tac-Toe to demonstrate machine learning and decision-making processes.",
+                    "answers": [
+                      {
+                        "text": "Continue...",
+                        "question": {
+                          "text": "Select Tic-Tac-Toe variation...",
+                          "answers": [
+                            {
+                              "text": "Classic Tic-Tac-Toe",
+                                "question": {
+                                  "text": "Classic Tic-Tac-Toe: \nThis is the standard version of the game played on a 3x3 grid. \nTwo players take turns marking an empty cell with their symbol (X or O). \nThe goal is to be the first to get three of your marks in a row, either horizontally, vertically, or diagonally. \n\nIf all cells are filled without either player achieving this, the game ends in a draw.",
+                                  "drawField": "classic",
+                                  "answers": [{
+                                    "goToParent": 1,
+                                    "text": "<<<Back>>>"
+                                  }]
+                                }
+                            },
+                            {
+                              "text": "5 in a Line (Gomoku)",
+                              "question": {
+                                "text": "5 in a Line (Gomoku): \nAlso known as Five in a Row, this game is played on a larger grid, typically 15x15 or 19x19. \n\nPlayers take turns placing their marks on the board with the objective of getting five in a row, \nhorizontally, vertically, or diagonally. Unlike classic Tic-Tac-Toe, \nwhich often ends in a draw with optimal play, \nGomoku requires deeper strategic thinking and planning due to the larger grid \nand the increased number of marks needed to win.",
+                                "drawField": "gomoku",
+                                "answers": [{
+                                  "goToParent": 1,
+                                  "text": "<<<Back>>>"
+                                }]
+                              }
+                            },
+                            {
+                              "text": "Connect Four (4 in a Height)",
+                              "question": {
+                                "text": "Connect Four (4 in a Height): \nThis game is played on a vertical grid, usually 7 columns wide and 6 rows high. \nPlayers take turns dropping their colored discs into one of the columns, with the discs falling \nto the lowest available position within the column. \nThe goal is to be the first to connect four of your discs in a row, either horizontally, \nvertically, or diagonally. \n\nConnect Four adds a gravity element to the gameplay, making it a unique challenge compared to traditional Tic-Tac-Toe.",
+                                "drawField": "connectFour",
+                                "answers": [{
+                                  "goToParent": 1,
+                                  "text": "<<<Back>>>"
+                                }]
+                              }
+                            },
+                            {
+                              "text": "Exit..."
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "text": "Exit..."
+                      }
+                    ]
+                  }
+                },
+                {
+                  "text": "Exit..."
+                }
+              ]
+            }
+          },
+          {
+            "text": "Exit..."
+          }
+        ]
+      }
+    },
+    {
+      "text": "Exit"
+    }
+  ]
+}
